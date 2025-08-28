@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../utils/constants";
+
 const Login = () => {
   const {
     register,
@@ -84,7 +85,7 @@ const Login = () => {
                 )}
               </fieldset>
             </div>
-            <div className="card-actions justify-center">
+            <div className="card-actions justify-center mt-[10px]">
               <button type="submit" className="btn btn-primary">
                 Login
               </button>
