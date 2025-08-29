@@ -129,9 +129,9 @@ const EditProfile = ({ user }) => {
               </fieldset>
               <fieldset className="fieldset">
                 <legend className="fieldset-legend">About</legend>
-                <input
+                <textarea
                   type="text"
-                  className="input"
+                  className="textarea"
                   placeholder="Type here"
                   {...register("about", {
                     required: "About is required",

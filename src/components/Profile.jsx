@@ -1,7 +1,6 @@
-import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import EditProfile from "./EditProfiile";
-import UserCard from "./UserCard";
+import UserCard from "../common/UserCard";
 
 const Profile = () => {
   const user = useSelector((store) => store.user);

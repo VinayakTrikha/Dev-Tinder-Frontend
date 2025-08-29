@@ -3,6 +3,8 @@ import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Layout from "./components/Layout";
 import Feed from "./components/Feed";
+import Connections from "./components/Connections";
+import Requests from "./components/Requests";
 
 const routes = [
   {
@@ -20,6 +22,14 @@ const routes = [
       {
         path: "feed",
         element: <Feed />,
+      },
+      {
+        path: "connections",
+        element: <Connections />,
+      },
+      {
+        path: "requests",
+        element: <Requests />,
       },
     ],
   },

@@ -4,10 +4,12 @@ const UserCard = ({
   showBtn2 = false,
   btn1Txt = "Interested",
   btn2Txt = "Ignore",
+  onConfirm = () => {},
+  onClose = () => {},
 }) => {
   if (!feedData) return;
 
-  const { firstName, lastName, age, gender, photoUrl, about, skills } =
+  const { firstName, lastName, age, gender, photoUrl, about, skills, _id } =
     feedData;
 
   return (
@@ -28,8 +30,16 @@ const UserCard = ({
           </div>
         )}
         <div className="card-actions justify-center mt-8 ">
-          {showBtn1 && <button className="btn btn-secondary">{btn1Txt}</button>}
-          {showBtn2 && <button className="btn btn-primary">{btn2Txt}</button>}
+          {showBtn1 && (
+            <button className="btn btn-secondary" onClick={() => onConfirm(_id, "interested")}>
+              {btn1Txt}
+            </button>
+          )}
+          {showBtn2 && (
+            <button className="btn btn-primary" onClick={() => onClose(_id, "ignored")}>
+              {btn2Txt}
+            </button>
+          )}
         </div>
       </div>
     </div>

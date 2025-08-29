@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { baseUrl } from "../utils/constants";
 import { addFeedData } from "../slices/feedSlice";
 import { useNavigate } from "react-router-dom";
-import UserCard from "./UserCard";
+import UserCard from "../common/UserCard";
+import * as requestService from "../services/request.service";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,20 @@ const Feed = () => {
     }
   };
 
+  const handleRequest = async (id, status) => {
+    try {
+      const params = {
+        status: status,
+        requestId: id,
+      };
+      await requestService.sendRequest(params);
+      const filteredData = feedArr.filter((feed) => feed._id !== id);
+      dispatch(addFeedData(filteredData));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchFeed();
   }, []);
@@ -31,7 +46,13 @@ const Feed = () => {
   console.log(user);
   return feedArr?.length > 0 ? (
     <div className="flex justify-center my-20">
-      <UserCard feedData={feedArr[0]} />
+      <UserCard
+        feedData={feedArr[0]}
+        showBtn1={true}
+        showBtn2={true}
+        onConfirm={handleRequest}
+        onClose={handleRequest}
+      />
     </div>
   ) : (
     <></>
