@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { baseUrl } from "../utils/constants";
 import { addUser } from "../slices/userSlice";
-import ShowToast from "../common/showToast";
+import ShowToast from "../common/ShowToast";
 import { useState } from "react";
 
 const EditProfile = ({ user }) => {
