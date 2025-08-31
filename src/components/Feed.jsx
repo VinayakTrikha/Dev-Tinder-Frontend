@@ -55,7 +55,7 @@ const Feed = () => {
       />
     </div>
   ) : (
-    <></>
+    <div className="text-center my-36">You are all caught up!!</div>
   );
 };
 

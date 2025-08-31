@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
+import Signup from "./components/Signup";
 
 const routes = [
   {
@@ -36,6 +37,10 @@ const routes = [
   {
     path: "login",
     element: <Login />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
   },
 ];
 

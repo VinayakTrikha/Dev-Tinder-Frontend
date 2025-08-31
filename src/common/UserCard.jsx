@@ -13,7 +13,7 @@ const UserCard = ({
     feedData;
 
   return (
-    <div className="card bg-base-300 w-96 shadow-sm ">
+    <div className="card bg-base-300 w-96 h-[400px] shadow-sm ">
       <img
         src={photoUrl}
         alt="Shoes"

@@ -3,6 +3,7 @@ import { resetUser } from "../slices/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../utils/constants";
+import { removeFeed } from "../slices/feedSlice";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
@@ -13,6 +14,7 @@ const NavBar = () => {
     try {
       await axios.post(`${baseUrl}/logout`, { credentials: true });
       dispatch(resetUser());
+      dispatch(removeFeed())
       navigate("login");
     } catch (error) {
       console.error(error);

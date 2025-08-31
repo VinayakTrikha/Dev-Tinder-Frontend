@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addUser } from "../slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { baseUrl } from "../utils/constants";
 
 const Login = () => {
@@ -85,10 +85,14 @@ const Login = () => {
                 )}
               </fieldset>
             </div>
-            <div className="card-actions justify-center mt-[10px]">
+            <div className="card-actions flex flex-col items-center items-baseline mt-[10px]">
               <button type="submit" className="btn btn-primary">
                 Login
               </button>
+              <div className="flex flex-row">
+                New User? &nbsp;
+                <Link to={"/signup"} className=" underline">Sign Up</Link>
+              </div>
             </div>
           </form>
         </div>
