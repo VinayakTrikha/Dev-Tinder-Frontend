@@ -1,16 +1,12 @@
-import axios from "axios";
-import { baseUrl } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import * as userService from "../services/user.service";
 const Connections = () => {
   const [connectionsArr, setConnectionArr] = useState([]);
 
   const fetchConnections = async () => {
     try {
-      const res = await axios.get(`${baseUrl}/user/connections`, {
-        withCredentials: true,
-      });
+      const res = await userService.fetchConnections();
       const fetchedData = res.data.data;
       setConnectionArr(fetchedData);
     } catch (error) {

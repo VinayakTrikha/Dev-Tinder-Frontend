@@ -1,11 +1,10 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { baseUrl } from "../utils/constants";
 import { addFeedData } from "../slices/feedSlice";
 import { useNavigate } from "react-router-dom";
 import UserCard from "../common/UserCard";
 import * as requestService from "../services/request.service";
+import * as userService from "../services/user.service";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -14,9 +13,7 @@ const Feed = () => {
 
   const fetchFeed = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/user/feed?page=1&limit=10`, {
-        withCredentials: true,
-      });
+      const response = await userService.fetchAllFeed();
       const feedData = response.data;
       dispatch(addFeedData(feedData.data));
     } catch (error) {

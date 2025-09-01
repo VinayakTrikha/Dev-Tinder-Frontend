@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
-import axios from "axios";
-import { baseUrl } from "../utils/constants";
 import { addUser } from "../slices/userSlice";
 import ShowToast from "../common/ShowToast";
 import { useState } from "react";
+import * as profileService from "../services/profile.service";
 
 const EditProfile = ({ user }) => {
   const {
@@ -24,9 +23,7 @@ const EditProfile = ({ user }) => {
 
   const onSubmit = async (formData) => {
     try {
-      const res = await axios.patch(`${baseUrl}/profile/edit/`, formData, {
-        withCredentials: true,
-      });
+      const res = await profileService.editProfile(formData);
       dispatch(addUser(formData));
       setToast({
         visible: true,

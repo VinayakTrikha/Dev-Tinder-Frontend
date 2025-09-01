@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { resetUser } from "../slices/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { baseUrl } from "../utils/constants";
 import { removeFeed } from "../slices/feedSlice";
+import * as authService from "../services/auth.service";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
@@ -12,9 +11,9 @@ const NavBar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post(`${baseUrl}/logout`, { credentials: true });
+      await authService.logout();
       dispatch(resetUser());
-      dispatch(removeFeed())
+      dispatch(removeFeed());
       navigate("login");
     } catch (error) {
       console.error(error);

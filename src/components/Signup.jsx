@@ -1,11 +1,8 @@
-import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { baseUrl } from "../utils/constants";
-import { addUser } from "../slices/userSlice";
-
+import * as authService from "../services/auth.service";
 import FormField from "../common/FormField";
 import SelectField from "../common/SelectField";
 import SkillsInput from "../common//SkillsInput";
@@ -25,9 +22,7 @@ const Signup = () => {
 
   const onSubmit = async (formData) => {
     try {
-      const response = await axios.post(`${baseUrl}/signup`, formData, {
-        withCredentials: true,
-      });
+      const response = await authService.signup(formData);
       setFormError("");
       navigate("/login");
     } catch (error) {

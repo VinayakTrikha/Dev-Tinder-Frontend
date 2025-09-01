@@ -1,15 +1,12 @@
-import axios from "axios";
-import { baseUrl } from "../utils/constants";
 import { useEffect, useState } from "react";
 import * as requestService from "../services/request.service";
+import * as userService from "../services/user.service";
 const Requests = () => {
   const [requestArr, setRequestArr] = useState([]);
 
   const fetchRequest = async () => {
     try {
-      const res = await axios.get(`${baseUrl}/user/request/received`, {
-        withCredentials: true,
-      });
+      const res = await userService.fetchRequests();
       const fetchedData = res.data.data;
       setRequestArr(fetchedData);
     } catch (error) {

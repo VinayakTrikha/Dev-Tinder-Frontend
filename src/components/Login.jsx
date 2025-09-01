@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addUser } from "../slices/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { baseUrl } from "../utils/constants";
+import * as authService from "../services/auth.service";
 
 const Login = () => {
   const {
@@ -24,9 +24,7 @@ const Login = () => {
 
   const onSubmit = async (formData) => {
     try {
-      const response = await axios.post(`${baseUrl}/login`, formData, {
-        withCredentials: true,
-      });
+      const response = await authService.login(formData);
       const userData = response.data;
       dispatch(addUser(userData.responseData));
       setFormError("");
@@ -90,7 +88,9 @@ const Login = () => {
               </button>
               <div className="flex flex-row">
                 New User? &nbsp;
-                <Link to={"/signup"} className=" underline">Sign Up</Link>
+                <Link to={"/signup"} className=" underline">
+                  Sign Up
+                </Link>
               </div>
             </div>
           </form>
