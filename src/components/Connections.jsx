@@ -26,7 +26,7 @@ const Connections = () => {
     <div className="flex flex-col my-10">
       <h1 className="font-bold text-3xl mb-6 text-center">Connections</h1>
 
-      {connectionsArr.length < 0 ? (
+      {connectionsArr.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {connectionsArr.map((connection) => {
             const {

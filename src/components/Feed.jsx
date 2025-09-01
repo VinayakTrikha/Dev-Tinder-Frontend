@@ -43,7 +43,6 @@ const Feed = () => {
   }, []);
 
   const user = useSelector((store) => store.user);
-  console.log(user);
   return feedArr?.length > 0 ? (
     <div className="flex justify-center my-20">
       <UserCard

@@ -24,7 +24,6 @@ const Login = () => {
 
   const onSubmit = async (formData) => {
     try {
-      console.log(formData);
       const response = await axios.post(`${baseUrl}/login`, formData, {
         withCredentials: true,
       });

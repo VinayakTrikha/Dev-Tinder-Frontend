@@ -11,7 +11,6 @@ const Requests = () => {
         withCredentials: true,
       });
       const fetchedData = res.data.data;
-      console.log(fetchedData);
       setRequestArr(fetchedData);
     } catch (error) {
       console.error(error);
